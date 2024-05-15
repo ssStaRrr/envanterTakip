@@ -11,10 +11,12 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "get-installed-apps": "^1.1.0",
     "mongoose": "^8.3.4",
     "nodemon": "^3.1.0",
     "pkg": "^5.8.1",
-    "systeminformation": "^5.22.8"
+    "systeminformation": "^5.22.8",
+    "util": "^0.12.5"
   },
   "description": ""
 }

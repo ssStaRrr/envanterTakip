@@ -5,7 +5,8 @@ const computer = new mongoose.Schema({
         type: {
             OS: String,
             hostname: String,
-            user: String
+            user: String,
+            OS_serialNumber: String
         }
     },
     CPU: {
@@ -63,6 +64,6 @@ const computer = new mongoose.Schema({
             typeOfNetworkCard: String
        
     }]
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model("Computer", computer)
