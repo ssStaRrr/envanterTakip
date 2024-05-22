@@ -11,7 +11,9 @@ const {getHardwareInfo} = require("./helpers/getHardwareInfo")
 // Githup API'sinden release bilgisini cekme
 const fetch = require('node-fetch');
 
-
+const owner = process.env.owner;
+const repo = process.env.repo;
+console.log(owner, repo, process.env.access_token)
 async function checkReleases() {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases`, {
         headers: {
