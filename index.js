@@ -14,7 +14,7 @@ const fetch = require('node-fetch');
 const owner = process.env.owner;
 const repo = process.env.repo;
 const token = process.env.access_token;
-console.log(owner, repo, process.env.access_token)
+
 async function checkReleases() {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases`, {
         headers: {
