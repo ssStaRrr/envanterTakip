@@ -12,11 +12,11 @@ const {getHardwareInfo} = require("./helpers/getHardwareInfo")
 const fetch = require('node-fetch');
 const owner = 'ssStaRrr';
 const repo = 'hardwareImfo';
-const accessToken = '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';
+
 async function checkReleases() {
     const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases`, {
         headers: {
-            'Authorization': `token ${accessToken}`
+            'Authorization': `token ${process.env.access_token}`
         }
     });
     const releases = await response.json();
