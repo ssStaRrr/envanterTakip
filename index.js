@@ -8,11 +8,29 @@ const Software = require("./models/software")
 const {getSoftwareInfo} = require("./helpers/getSoftwarInfo")
 const {getHardwareInfo} = require("./helpers/getHardwareInfo")
 
+// Githup API'sinden release bilgisini cekme
+const fetch = require('node-fetch');
+const owner = 'ssStaRrr';
+const repo = 'hardwareImfo';
+const accessToken = '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';
+async function checkReleases() {
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases`, {
+        headers: {
+            'Authorization': `token ${accessToken}`
+        }
+    });
+    const releases = await response.json();
+    console.log(releases);
+}
+checkReleases()
+// Her 1 saatte bir sürümleri kontrol et
+setInterval(checkReleases, 3600000);
+
 //Connect to the mongodb and listen port 3000
-mongoose.connect(process.env.MONGO_URI_COMPASS).then(() => {
+mongoose.connect("mongodb://172.16.1.72:27017").then(() => {
     //listen for request
-    app.listen(process.env.PORT, () => {
-        console.log("listening on port", process.env.PORT)
+    app.listen(3000, () => {
+        console.log("listening on port", 3000)
     })
 }).catch((err) => {
     console.log(err)
