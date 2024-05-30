@@ -77,18 +77,19 @@ async function updateProject() {
             console.log(`Mevcut sürümünüz: ${currentVersion}. Lütfen sürümünüzü en son sürüm olan ${latestVersion} sürümüne güncelleyiniz.`);
             //uzantisi .zip olan tüm asset'ler tek bir değişkende toplanıyor.
             const asset = latestRelease.assets.filter(a =>  a.name.endsWith('.zip'))
-            console.log(asset.length)
             if (!asset) {
                 console.log("son sürümde uygun bir zip dosyasi bulunmuyor")
             }
             console.log('Yeni sürüm indiriliyor...');
+            for(let i=0; i<asset.length; i++){
+                await downloadAndExtract(asset[i].browser_download_url, path.resolve(__dirname, ''));
+            }
             //Her bir asset'in download linki üzerinden indirme işlemi yapiliyor
-            asset.forEach(element => {
-                console.log(element.browser_download_url)
-                downloadAndExtract(element.browser_download_url, path.resolve(__dirname, ''));
-            });
-            //await downloadAndExtract(asset.browser_download_url, path.resolve(__dirname, ''));
-
+            // asset.forEach(element => {
+            //     console.log(element.browser_download_url)
+            //     downloadAndExtract(element.browser_download_url, path.resolve(__dirname, ''));
+            // });
+            
             console.log("Mevcut Surum guncelleniyor...")
             await setCurrentVersion(latestVersion)
         }else {
@@ -100,7 +101,8 @@ async function updateProject() {
         console.error(`Error: ${err.message}`);
     }
 }
-setTimeout(updateProject, 2000); // 10000 milisaniye = 10 saniye
+setTimeout(updateProject, 10000); // 10000 milisaniye = 10 saniye
+
 // Her 1 saatte bir sürümleri kontrol et
 setInterval(updateProject, 60 * 60 * 1000);
 
