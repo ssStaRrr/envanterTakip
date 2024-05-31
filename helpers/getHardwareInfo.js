@@ -38,13 +38,13 @@ const getHardwareInfo = async() => {
                 },
                 Memory: {
                     //bayt'ı GB'a çevirme
-                    total: memData.total / 1073741824
+                    total: Math.ceil(memData.total / 1073741824) 
                 },
                 Disk: {
                     name: diskData[0].name,
                     typeOfDisk: diskData[0].type,
                     // //bayt'ı GB'a çevirme
-                    size: (diskData[0].size) / 1073741824,
+                    size: Math.ceil((diskData[0].size) / 1073741824),
                     serialNum: diskData[0].serialNum,
                     interfaceType: diskData[0].interfaceType
                 },
@@ -88,13 +88,13 @@ const getHardwareInfo = async() => {
                     },
                     Memory: {
                         //bayt'ı GB'a çevirme
-                        total: memData.total / 1073741824
+                        total: Math.ceil(memData.total / 1073741824)
                     },
                     Disk: {
                         name: diskData[0].name,
                         typeOfDisk: diskData[0].type,
                         // //bayt'ı GB'a çevirme
-                        size: (diskData[0].size) / 1073741824,
+                        size: Math.ceil((diskData[0].size) / 1073741824),
                         serialNum: diskData[0].serialNum,
                         interfaceType: diskData[0].interfaceType
                     },
